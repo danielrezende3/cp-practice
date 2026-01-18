@@ -55,10 +55,13 @@ using namespace std;
 #define vld vector<ld>
 
 void solve() {
-    
+  
 }
 
 int main() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+
   int count;
   cin >> count;
   while (count--) {
@@ -66,6 +69,7 @@ int main() {
   }
   return 0;
 }
+
 EOF
   else
     echo "Skipping ${letter}.cpp (already exists)"

@@ -1,5 +1,6 @@
 {
 	"Competitive programming C++ template": {
+		"description": "Template for C++ competitive programming",
 		"prefix": "cpt",
 		"body": [
 			"// time-taken:",
@@ -17,6 +18,9 @@
 			"}",
 			"",
 			"int main() {",
+			"  ios::sync_with_stdio(false);",
+			"  cin.tie(nullptr);",
+			"",
 			"  int count;",
 			"  cin >> count;",
 			"  while (count--) {",
@@ -26,9 +30,8 @@
 			"}",
 			""
 		],
-		"description": "Template for C++ competitive programming"
 	},
-		"LeetCode C++ template": {
+	"LeetCode C++ template": {
 		"prefix": "ltc",
 		"body": [
 			"#include <bits/stdc++.h>",
