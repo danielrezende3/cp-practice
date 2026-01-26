@@ -1,4 +1,14 @@
 {
+	"catching vector input": {
+		"description": "template for catching vector input",
+		"prefix": "cinvll",
+		"body": [
+			"vll v(n);",
+			"for (ll i = 0; i < n; i++) {",
+			"  cin >> v[i];",
+			"}"
+		]
+	},
 	"Competitive programming C++ template": {
 		"description": "Template for C++ competitive programming",
 		"prefix": "cpt",
