@@ -1,0 +1,48 @@
+{
+    "Competitive programming Python template": {
+        "description": "Template for Python competitive programming",
+        "prefix": "cpt",
+        "body": [
+            "# time-taken:",
+            "# tag:",
+            "import sys",
+            "input = sys.stdin.readline",
+            "",
+            "def solve():",
+            "    $1",
+            "",
+            "def main():",
+            "    t = int(input())",
+            "    for _ in range(t):",
+            "        solve()",
+            "",
+            "if __name__ == \"__main__\":",
+            "    main()"
+        ]
+    },
+    "LeetCode Python template": {
+        "description": "Template for Python LeetCode",
+        "prefix": "ltc",
+        "body": [
+            "class Solution:",
+            "    def $1(self):",
+            "        pass"
+        ]
+    },
+    "CSES Python template": {
+        "description": "Template for CSES Python",
+        "prefix": "cses",
+        "body": [
+            "# time-taken:",
+            "# tag:",
+            "import sys",
+            "input = sys.stdin.readline",
+            "",
+            "def main():",
+            "    $1",
+            "",
+            "if __name__ == \"__main__\":",
+            "    main()"
+        ]
+    }
+}
