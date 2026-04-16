@@ -3,6 +3,9 @@
 		"description": "template for catching vector input",
 		"prefix": "cinvll",
 		"body": [
+			"ll n;",
+			"cin >> n;",
+			"",
 			"vll v(n);",
 			"for (ll i = 0; i < n; i++) {",
 			"  cin >> v[i];",
