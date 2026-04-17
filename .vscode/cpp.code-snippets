@@ -1,6 +1,5 @@
 {
 	"catching vector input": {
-		"description": "template for catching vector input",
 		"prefix": "cinvll",
 		"body": [
 			"ll n;",
@@ -12,8 +11,7 @@
 			"}"
 		]
 	},
-	"Competitive programming C++ template": {
-		"description": "Template for C++ competitive programming",
+	"Codeforces C++ template": {
 		"prefix": "cpt",
 		"body": [
 			"// time-taken:",
@@ -26,6 +24,8 @@
 			"#define vll vector<ll>",
 			"#define vld vector<ld>",
 			"#define vpl vector<pair<ll,ll>>",
+			"",
+			"const ll MOD = 1e9 + 7;",
 			"",
 			"void solve() {",
 			"  $1",
@@ -76,6 +76,8 @@
 			"#define vll vector<ll>",
 			"#define vld vector<ld>",
 			"#define vpl vector<pair<ll,ll>>",
+			"",
+			"const ll MOD = 1e9 + 7;",
 			"",
 			"int main() {",
 			"  ios::sync_with_stdio(false);",
