@@ -28,24 +28,24 @@ Each `.cpp` file implements `solve()` and `main()` to handle one test case (or m
 
 ## Creating new contest folders
 
-You can automatically create a new contest folder with boilerplate files using [new_contest.sh](new_contest.sh):
+You can automatically create a new contest folder with boilerplate files using [new_contest.sh](scripts/new_contest.sh):
 
 ```bash
-# Usage: new_contest.sh "<contest-folder-name>" <num-of-problems|last-problem-letter>
-./new_contest.sh "Codeforces Round 1025 (Div. 3)" 13
+# Usage: scripts/new_contest.sh "<contest-folder-name>" <num-of-problems|last-problem-letter>
+./scripts/new_contest.sh "Codeforces Round 1025 (Div. 3)" 13
 # or
-./new_contest.sh "Codeforces Round 1025 (Div. 3)" a
+./scripts/new_contest.sh "Codeforces Round 1025 (Div. 3)" a
 # or 
-./new_contest.sh "Codeforces Round 1025 (Div. 3)" Z
+./scripts/new_contest.sh "Codeforces Round 1025 (Div. 3)" Z
 ```
 
 ## Contest Reporting
 
-Use [contest_report.py](contest_report.py) to generate CSV reports from completed contests:
+Use [contest_report.py](scripts/contest_report.py) to generate CSV reports from completed contests:
 
 ```bash
 # Generate report for a specific contest
-python contest_report.py "contests/Codeforces Round 1025 (Div. 3)" -o results.csv
+python3 scripts/contest_report.py "contests/Codeforces Round 1025 (Div. 3)" -o results.csv
 ```
 
 The script extracts information from the first two comment lines of each `.cpp` file:
@@ -66,6 +66,8 @@ The generated CSV includes:
   ```bash
   g++-13 -std=c++17 path/to/solution.cpp -O2 -o solution.out
   ./solution.out < path/to/input_file
+  # OR if you have make
+  make solution && ./solution > path/to/input_file
   ```
 - **VS Code Task:** Use the built-in task **C/C++: g++-13 arquivo de build ativo** to compile the current file. It will produce an executable with `.out` suffix in the same directory.
 - **VS Code Debug**: Launch via **(gdb) Iniciar** in the debug panel (configured in .vscode/launch.json). It will run the `.out` binary with `< ${fileBasenameNoExtension}.input`.
@@ -76,7 +78,4 @@ I leverage the following platforms to learn algorithms and data structures:
 * [CSES Problem Set](https://cses.fi/problemset/)
 * [USACO Guide](https://usaco.guide/)
 * [NEPS Academy](https://neps.academy/)
-
-## Contest Tracking
-A live spreadsheet tracks all contests and problems solved so far:
-* [Contest Tracker](http://bit.ly/44OZJYl)
+* [YouKn0wWho Academy](https://youkn0wwho.academy/)

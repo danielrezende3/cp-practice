@@ -29,8 +29,12 @@ if ((n < 1 || n > 26)); then
   exit 1
 fi
 
-mkdir -p contests/"$contest"
-pushd contests/"$contest" >/dev/null
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+repo_root="$(cd "$script_dir/.." && pwd)"
+contest_dir="$repo_root/contests/$contest"
+
+mkdir -p "$contest_dir"
+pushd "$contest_dir" >/dev/null
 
 for ((i = 0; i < n; i++)); do
   ascii=$((97 + i))

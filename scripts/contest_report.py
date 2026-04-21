@@ -3,6 +3,7 @@ import csv
 import argparse
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
 pattern_tag = re.compile(r"^//\s*tag:(?:\s*(?P<tag>\S+))?$")
 pattern_time = re.compile(r"^//\s*time-taken:(?:\s*(?P<time>\d+))?$")
 VALID_TAGS = {"SOLVED", "TIMEOUT", "PARTIAL", "NO_IDEA"}
@@ -83,6 +84,18 @@ def save_to_csv(data: list[tuple[str, str, int, str, str]], filename: str):
         writer.writerows(data)
 
 
+def resolve_contest_folder(contest_folder: str) -> Path:
+    folder = Path(contest_folder)
+    if folder.is_absolute():
+        return folder
+
+    cwd_folder = Path.cwd() / folder
+    if cwd_folder.exists():
+        return cwd_folder
+
+    return REPO_ROOT / folder
+
+
 def main():
     parser = argparse.ArgumentParser(description="Generate contest report from C++ files")
     parser.add_argument("contest_folder", help="Path to contest folder containing .cpp files")
@@ -90,7 +103,7 @@ def main():
 
     args = parser.parse_args()
 
-    folder = Path(args.contest_folder)
+    folder = resolve_contest_folder(args.contest_folder)
     if not folder.exists():
         print(f"Error: Folder '{args.contest_folder}' does not exist")
         return
