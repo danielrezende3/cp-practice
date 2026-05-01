@@ -1,15 +1,35 @@
 {
+  "version": "2.0.0",
   "tasks": [
     {
-      "type": "cppbuild",
-      "label": "C/C++: g++ build active file",
-      "command": "/usr/bin/g++",
+      "label": "ensure .build directory",
+      "type": "shell",
+      "command": "mkdir",
       "args": [
+        "-p",
+        ".build"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "cppbuild",
+      "label": "C/C++: clang++ build active file",
+      "command": "/usr/bin/clang++",
+      "args": [
+        "-std=c++20",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Wshadow",
+        "-DLOCAL",
         "-fdiagnostics-color=always",
         "-g",
         "${file}",
         "-o",
-        "${fileDirname}/${fileBasenameNoExtension}.out"
+        "${fileDirname}/.build/${fileBasenameNoExtension}"
       ],
       "options": {
         "cwd": "${fileDirname}"
@@ -17,9 +37,15 @@
       "problemMatcher": [
         "$gcc"
       ],
-      "group": "build",
-      "detail": "compiler: /usr/bin/g++"
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": [
+        "ensure .build directory"
+      ],
+      "dependsOrder": "sequence",
+      "detail": "compiler: /usr/bin/clang++"
     }
-  ],
-  "version": "2.0.0"
+  ]
 }

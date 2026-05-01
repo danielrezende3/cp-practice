@@ -1,0 +1,14 @@
+[
+  {
+    "label": "Debug C++ current binary",
+    "adapter": "CodeLLDB",
+    "request": "launch",
+    "program": "$ZED_WORKTREE_ROOT/main.out",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "args": [],
+    "build": {
+      "command": "clang++",
+      "args": ["-g", "$ZED_FILE", "-o", "$ZED_WORKTREE_ROOT/main.out"],
+    },
+  },
+]
