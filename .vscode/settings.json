@@ -1,4 +1,11 @@
 {
+    "files.exclude": {
+        ".vscode": true,
+        ".zed": true,
+        ".build": true,
+        ".gitignore": true,
+        ".clang-format": true,
+    },
     "editor.renderLineHighlight": "all",
     "editor.cursorBlinking": "smooth",
     "editor.minimap.enabled": false,
