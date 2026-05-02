@@ -20,11 +20,10 @@
       "command": "/usr/bin/clang++",
       "args": [
         "-std=c++20",
-        // "-O2",
+        "-O0",
         "-Wall",
         "-Wextra",
         "-Wshadow",
-        "-DLOCAL",
         "-fdiagnostics-color=always",
         "-g",
         "${file}",

@@ -1,10 +1,11 @@
 CXX = clang++
 CXXFLAGS = -std=c++20 -O2 -Wall -Wextra -Wshadow -DLOCAL
 BIN = .build
+PROBLEMS = a b c d e f
 
-.PHONY: a b c d e f clean
+.PHONY: $(PROBLEMS) clean
 
-a b c d e f: %: $(BIN)/%
+$(PROBLEMS): %: $(BIN)/%
 	./$(BIN)/$@ < $@.in > $@.out
 
 a%: $(BIN)/a
@@ -30,4 +31,4 @@ $(BIN)/%: %.cpp
 	$(CXX) $(CXXFLAGS) $< -o $@
 
 clean:
-	rm -rf $(BIN) *.out
+	rm -rf $(BIN) $(addsuffix .in,$(PROBLEMS)) $(addsuffix .out,$(PROBLEMS))

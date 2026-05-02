@@ -1,7 +1,7 @@
 {
     "Competitive programming Python template": {
         "description": "Template for Python competitive programming",
-        "prefix": "cpt",
+        "prefix": "codeforces",
         "body": [
             "# time-taken:",
             "# tag:",
@@ -22,7 +22,7 @@
     },
     "LeetCode Python template": {
         "description": "Template for Python LeetCode",
-        "prefix": "ltc",
+        "prefix": "leetcode",
         "body": [
             "class Solution:",
             "    def $1(self):",

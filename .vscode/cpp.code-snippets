@@ -12,7 +12,7 @@
 		]
 	},
 	"Codeforces C++ template": {
-		"prefix": "cpt",
+		"prefix": "codeforces",
 		"body": [
 			"// time-taken:",
 			"// tag:",
@@ -45,7 +45,7 @@
 		],
 	},
 	"LeetCode C++ template": {
-		"prefix": "ltc",
+		"prefix": "leetcode",
 		"body": [
 			"#include <bits/stdc++.h>",
 			"",

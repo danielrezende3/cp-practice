@@ -1,2 +1,7 @@
-# Ignore .build/
-.build
+# Ignore build artifacts
+/.build/
+
+# Ignore root scratch contest files
+/[a-f].cpp
+/*.in
+/*.out
