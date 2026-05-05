@@ -2,49 +2,15 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "ensure .build directory",
-      "type": "shell",
-      "command": "mkdir",
-      "args": [
-        "-p",
-        ".build"
-      ],
-      "options": {
-        "cwd": "${fileDirname}"
-      },
-      "problemMatcher": []
-    },
-    {
-      "type": "cppbuild",
       "label": "C/C++: clang++ build active file",
-      "command": "/usr/bin/clang++",
-      "args": [
-        "-std=c++20",
-        "-O0",
-        "-Wall",
-        "-Wextra",
-        "-Wshadow",
-        "-fdiagnostics-color=always",
-        "-g",
-        "${file}",
-        "-o",
-        "${fileDirname}/.build/${fileBasenameNoExtension}"
-      ],
+      "type": "shell",
+      "command": "mkdir -p .build && /usr/bin/clang++-22 -std=c++20 -O0 -g ${file} -o .build/${fileBasenameNoExtension}",
       "options": {
         "cwd": "${fileDirname}"
       },
       "problemMatcher": [
         "$gcc"
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "dependsOn": [
-        "ensure .build directory"
-      ],
-      "dependsOrder": "sequence",
-      "detail": "compiler: /usr/bin/clang++"
-    }
+      ]
+    },
   ]
 }

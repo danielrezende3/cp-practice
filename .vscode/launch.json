@@ -2,33 +2,25 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "CodeLLDB: launch with input",
-      "type": "lldb",
+      "name": "lldb-dap: Launch",
+      "type": "lldb-dap",
       "request": "launch",
-      "preLaunchTask": "C/C++: clang++ build active file",
       "program": "${fileDirname}/.build/${fileBasenameNoExtension}",
-      "args": [],
       "cwd": "${fileDirname}",
-      "stdio": [
-        "${fileBasenameNoExtension}.in",
-        null,
-        null
-      ],
-      "sourceLanguages": [
-        "cpp"
-      ]
+      "args": [],
+      "preLaunchTask": "C/C++: clang++ build active file"
     },
     {
-      "name": "CodeLLDB: launch",
-      "type": "lldb",
+      "name": "lldb-dap: Launch with input",
+      "type": "lldb-dap",
       "request": "launch",
-      "preLaunchTask": "C/C++: clang++ build active file",
       "program": "${fileDirname}/.build/${fileBasenameNoExtension}",
-      "args": [],
       "cwd": "${fileDirname}",
-      "sourceLanguages": [
-        "cpp"
-      ]
+      "args": [],
+      "stdio": [
+        "${fileDirname}/${fileBasenameNoExtension}.in",
+      ],
+      "preLaunchTask": "C/C++: clang++ build active file"
     }
   ]
 }
