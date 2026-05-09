@@ -1,5 +1,10 @@
 # Ignore build artifacts
 /.build/
+**/.build/
+**/bits/
+**/*.gch
+**/*.pch
+**/*.out
 
 # Ignore root scratch contest files
 /[a-f].cpp

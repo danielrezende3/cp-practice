@@ -8,7 +8,7 @@
       "program": "${fileDirname}/.build/${fileBasenameNoExtension}",
       "cwd": "${fileDirname}",
       "args": [],
-      "preLaunchTask": "C/C++: clang++ build active file"
+      "preLaunchTask": "C/C++: build active file"
     },
     {
       "name": "lldb-dap: Launch with input",
@@ -18,9 +18,9 @@
       "cwd": "${fileDirname}",
       "args": [],
       "stdio": [
-        "${fileDirname}/${fileBasenameNoExtension}.in",
+        "${fileDirname}/${fileBasenameNoExtension}.input",
       ],
-      "preLaunchTask": "C/C++: clang++ build active file"
+      "preLaunchTask": "C/C++: build active file"
     }
   ]
 }

@@ -2,15 +2,12 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "C/C++: clang++ build active file",
+      "label": "C/C++: build active file",
       "type": "shell",
-      "command": "mkdir -p .build && /usr/bin/clang++-22 -std=c++20 -O0 -g ${file} -o .build/${fileBasenameNoExtension}",
+      "command": "make -f \"${workspaceFolder}/Makefile\" build-${fileBasenameNoExtension}",
       "options": {
         "cwd": "${fileDirname}"
       },
-      "problemMatcher": [
-        "$gcc"
-      ]
     },
   ]
 }

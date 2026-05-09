@@ -1,34 +1,26 @@
-CXX = clang++
-CXXFLAGS = -std=c++20 -O2 -Wall -Wextra -Wshadow -DLOCAL
+CXX = clang++-22
+CXXFLAGS = -std=c++20 -g -Wall -Wextra -Wshadow -DLOCAL
 BIN = .build
-PROBLEMS = a b c d e f
+INPUT_EXT = input
+PROBLEMS = a b c d e f g h
+ROOT_DIR = $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
+PCH_SCRIPT = $(ROOT_DIR)/scripts/setup_pch.sh
+PCH_FLAGS = -I. -include-pch bits/stdc++.h.pch
 
-.PHONY: $(PROBLEMS) clean
+.PHONY: $(PROBLEMS) pch clean
 
 $(PROBLEMS): %: $(BIN)/%
-	./$(BIN)/$@ < $@.in > $@.out
+	./$(BIN)/$@ < $@.$(INPUT_EXT) > $@.out
 
-a%: $(BIN)/a
-	./$(BIN)/a < $@.in > $@.out
+build-%: $(BIN)/%
+	@:
 
-b%: $(BIN)/b
-	./$(BIN)/b < $@.in > $@.out
+pch:
+	CXX="$(CXX)" CXXFLAGS="$(CXXFLAGS) -I." "$(PCH_SCRIPT)" "$(CURDIR)"
 
-c%: $(BIN)/c
-	./$(BIN)/c < $@.in > $@.out
-
-d%: $(BIN)/d
-	./$(BIN)/d < $@.in > $@.out
-
-e%: $(BIN)/e
-	./$(BIN)/e < $@.in > $@.out
-
-f%: $(BIN)/f
-	./$(BIN)/f < $@.in > $@.out
-
-$(BIN)/%: %.cpp
+$(BIN)/%: %.cpp pch
 	mkdir -p $(BIN)
-	$(CXX) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CXXFLAGS) $(PCH_FLAGS) $< -o $@
 
 clean:
-	rm -rf $(BIN) $(addsuffix .in,$(PROBLEMS)) $(addsuffix .out,$(PROBLEMS))
+	rm -rf $(BIN) bits *.out

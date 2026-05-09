@@ -50,7 +50,7 @@ for ((i = 0; i < n; i++)); do
     cat >"${letter}.cpp" <<'EOF'
 // time-taken:
 // tag:
-#include <bits/stdc++.h>
+#include "bits/stdc++.h"
 
 using namespace std;
 #define ll long long
