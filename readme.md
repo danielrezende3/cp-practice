@@ -26,6 +26,10 @@ Each contest is organized in its own folder, named after the contest and divisio
 
 Each `.cpp` file implements `solve()` and `main()` to handle one test case (or multiple, as described in the problem). Sample inputs (`*.input`) are provided for quick local testing.
 
+## Required Tools
+
+See [Required Tools](docs/required-tools.md) for the command-line tools needed to build, run, debug, and generate contest reports.
+
 ## Creating new contest folders
 
 You can automatically create a new contest folder with boilerplate files using [new_contest.sh](scripts/new_contest.sh):
@@ -48,66 +52,47 @@ Use [contest_report.py](scripts/contest_report.py) to generate CSV reports from 
 python3 scripts/contest_report.py "contests/Codeforces Round 1025 (Div. 3)" -o results.csv
 ```
 
-The script extracts information from the first two comment lines of each `.cpp` file:
-- `// time-taken: <minutes>` - Time spent solving the problem
-- `// tag: <status>` - Problem status (SOLVED, TIMEOUT, PARTIAL, NO_IDEA)
-
-Valid tags: `SOLVED`, `TIMEOUT`, `PARTIAL`, `NO_IDEA`
-
-The generated CSV includes:
-- Contest name
-- Problem file
-- Time taken
-- Tag/status
-- Overall status (SOLVED_ON_TIME if ≤20 minutes, TIME_EXCEEDED if >20 minutes)
+See [Contest Reporting](docs/contest-reporting.md) for the required file header, valid tags, and CSV format.
 
 ## How to Build & Run
 
 The root [Makefile](Makefile) is intended for quick local testing of contest files in
-the current directory. It compiles with `clang++`, C++20, optimization enabled, and
-`-DLOCAL`.
+the current directory. It compiles with `clang++-22`, C++20, `-DLOCAL`, and a
+generated local precompiled `bits/stdc++.h`.
+
+The precompiled header is created on demand in the current contest directory under
+`bits/`. Generated PCH files and binaries are ignored by git, so the repository only
+tracks the scripts and templates needed to rebuild them.
+
+See [Precompiled `bits/stdc++.h`](docs/precompiled-headers.md) for how the generated header works and why solution files should use `#include "bits/stdc++.h"`.
 
 - **Run a problem sample:**
   ```bash
   make a
   ```
-  This compiles `a.cpp` to `.build/a`, runs it with `a.in`, and writes the result to
+  This compiles `a.cpp` to `.build/a`, runs it with `a.input`, and writes the result to
   `a.out`.
-
-- **Run additional samples for the same problem:**
-  ```bash
-  make a1
-  make a2
-  ```
-  These reuse `.build/a`, read from `a1.in` or `a2.in`, and write to `a1.out` or
-  `a2.out`.
 
 - **Supported problem targets:**
   ```bash
-  make a
-  make b
-  make c
-  make d
-  make e
-  make f
+  make a -> h
   ```
-  Numbered sample targets are also supported for each problem letter, such as
-  `make b1`, `make c2`, or `make f3`.
 
 - **Clean generated files:**
   ```bash
   make clean
   ```
-  This removes `.build/` and any `*.out` files in the current directory.
+  This removes `.build/`, `bits/` and any `*.out` files in the current directory.
 
-- **Compile a solution manually:**
+- **Prepare or rebuild the precompiled header:**
   ```bash
-  g++-13 -std=c++17 path/to/solution.cpp -O2 -o solution.out
-  ./solution.out < path/to/input_file
+  make pch
   ```
+  This creates `bits/stdc++.h` plus the compiler-specific precompiled header in the
+  current directory. Generated `bits/` and `.build/` files stay out of git.
 
-- **VS Code Task:** Use the built-in task **C/C++: g++-13 arquivo de build ativo** to compile the current file. It will produce an executable with `.out` suffix in the same directory.
-- **VS Code Debug**: Launch via **(gdb) Iniciar** in the debug panel (configured in .vscode/launch.json). It will run the `.out` binary with `< ${fileBasenameNoExtension}.input`.
+- **VS Code Task:** Use the built-in task **C/C++: build active file** to compile the current file through the Makefile. It writes executables to `.build/`.
+- **VS Code Debug**: Launch via **lldb-dap: Launch** or **lldb-dap: Launch with input** in the debug panel. It runs the `.build/` binary, with the input variant reading `${fileBasenameNoExtension}.input`.
 
 
 ## Study Resources
