@@ -101,3 +101,4 @@ I leverage the following platforms to learn algorithms and data structures:
 * [USACO Guide](https://usaco.guide/)
 * [NEPS Academy](https://neps.academy/)
 * [YouKn0wWho Academy](https://youkn0wwho.academy/)
+* [CP31-sheet](https://www.tle-eliminators.com/cp-sheet)
