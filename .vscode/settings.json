@@ -5,6 +5,9 @@
         ".build": true,
         ".gitignore": true,
         ".clang-format": true,
+        ".clangd":true,
+        "compile_flags":true,
+        "bits/":true
     },
     "editor.renderLineHighlight": "all",
     "editor.cursorBlinking": "smooth",
