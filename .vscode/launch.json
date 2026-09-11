@@ -17,8 +17,8 @@
       "program": "${fileDirname}/.build/${fileBasenameNoExtension}",
       "cwd": "${fileDirname}",
       "args": [],
-      "stdio": [
-        "${fileDirname}/${fileBasenameNoExtension}.input",
+      "preRunCommands": [
+        "settings set target.input-path \"${fileDirname}/${fileBasenameNoExtension}.input\""
       ],
       "preLaunchTask": "C/C++: build active file"
     }
