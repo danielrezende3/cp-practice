@@ -1,4 +1,4 @@
-CXX = clang++-22
+CXX = clang++
 ROOT_DIR = $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 COMPILE_FLAGS_FILE = $(ROOT_DIR)/compile_flags.txt
 CXXFLAGS = $(shell cat "$(COMPILE_FLAGS_FILE)")

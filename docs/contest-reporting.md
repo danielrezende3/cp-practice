@@ -1,6 +1,6 @@
 # Contest Reporting
 
-Use `scripts/contest_report.py` to generate a CSV summary for a completed contest.
+`scripts/contest_report.py` turns the metadata at the top of each solution into a CSV summary of a completed contest. It uses only the Python 3 standard library.
 
 ## Required File Header
 
@@ -22,7 +22,7 @@ Valid tags are:
 
 Files with missing or invalid metadata are skipped and reported in the terminal output.
 
-## Generate A Report
+## Generate a Report
 
 From the repository root:
 
@@ -38,7 +38,7 @@ If `-o` is omitted, the default output file is:
 contest_results.csv
 ```
 
-## CSV Columns
+## Report Contents
 
 The generated CSV contains:
 
@@ -54,10 +54,4 @@ The generated CSV contains:
 - `TIME_EXCEEDED`: tag is `SOLVED` and time is more than 20 minutes
 - `NOT_SOLVED`: tag is anything other than `SOLVED`
 
-## Example
-
-```bash
-python3 scripts/contest_report.py "contests/Codeforces Round 1074 (Div. 4)" -o round-1074.csv
-```
-
-Expected terminal output includes how many `.cpp` files were found, which files were skipped if metadata is invalid, and where the CSV was saved.
+The command reports how many `.cpp` files it found, identifies files skipped because of invalid metadata, and prints the saved CSV path.

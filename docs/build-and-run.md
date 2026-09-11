@@ -1,22 +1,22 @@
-# Precompiled `bits/stdc++.h`
+# Build and Run Solutions
 
-This repository builds contest solutions with a local precompiled `bits/stdc++.h` by default.
+The Makefile compiles C++20 solutions with `clang++` and uses a local precompiled `bits/stdc++.h` to keep repeated builds fast. It does not require a particular Clang version.
 
-The normal path is:
+From a contest directory, point Make at the repository Makefile:
 
 ```bash
-make a
+make -f ../../Makefile a
 ```
 
 That command:
 
 1. creates or refreshes `bits/stdc++.h` and `bits/stdc++.h.pch` in the current contest directory;
-2. compiles `a.cpp` with `clang++-22`;
+2. compiles `a.cpp` with the `clang++` available on `PATH`;
 3. passes `-I. -include-pch bits/stdc++.h.pch`;
 4. runs `.build/a` with `a.input`;
 5. writes output to `a.out`.
 
-## Include Style
+## Source Include
 
 Use quotes in solution files:
 
@@ -24,13 +24,9 @@ Use quotes in solution files:
 #include "bits/stdc++.h"
 ```
 
-Do not use angle brackets for this project:
-
-```cpp
-#include <bits/stdc++.h>
-```
-
 The quoted include makes the source use the local generated header under `./bits/`, matching the precompiled header passed by the Makefile.
+
+When the compiler does not provide GNU's non-standard header, the setup script uses the repository's portable standard-library fallback instead.
 
 New files created by `scripts/new_contest.sh` and the VS Code snippets already use the quoted include.
 
@@ -48,21 +44,21 @@ bits/stdc++.h.pch.meta
 
 These files are intentionally ignored by git.
 
-## Rebuild The PCH
+## Rebuild and Clean
 
 Usually, you do not need to run this manually because `make a` depends on `make pch`.
 
 To force preparation before compiling:
 
 ```bash
-make pch
+make -f ../../Makefile pch
 ```
 
 To remove generated files and rebuild cleanly:
 
 ```bash
-make clean
-make pch
+make -f ../../Makefile clean
+make -f ../../Makefile pch
 ```
 
 ## VS Code
@@ -75,18 +71,18 @@ make -f "${workspaceFolder}/Makefile" build-${fileBasenameNoExtension}
 
 That goes through the same Makefile compile rule, so VS Code build and debug also use the precompiled header by default.
 
-## Compiler
+## Compiler Selection
 
 The Makefile defaults to:
 
 ```make
-CXX = clang++-22
+CXX = clang++
 ```
 
-If `clang++-22` is not installed, install it or temporarily override the compiler:
+The command resolves whatever unversioned `clang++` is available on `PATH`. You can override it for one invocation if needed:
 
 ```bash
-make a CXX=clang++
+make -f ../../Makefile a CXX=/path/to/clang++
 ```
 
-If you override the compiler, run `make clean` first so the generated PCH matches the compiler and flags for the next build.
+If you override the compiler, run `make -f ../../Makefile clean` first so the generated PCH matches the compiler and flags for the next build.

@@ -2,15 +2,17 @@
 set -euo pipefail
 
 target_dir="${1:-$PWD}"
-cxx="${CXX:-clang++-22}"
+cxx="${CXX:-clang++}"
 cxxflags="${CXXFLAGS:--std=c++20 -O2 -Wall -Wextra -Wshadow -DLOCAL -I.}"
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+portable_header="$script_dir/portable_stdc++.h"
 read -r -a flags <<<"$cxxflags"
 version="$("$cxx" --version | head -n 1)"
 
 mkdir -p "$target_dir/bits"
 
 header="$target_dir/bits/stdc++.h"
-if [[ "${version,,}" == *clang* ]]; then
+if [[ "$version" == *[Cc][Ll][Aa][Nn][Gg]* ]]; then
   pch="$header.pch"
 else
   pch="$header.gch"
@@ -27,13 +29,12 @@ trap 'rm -f "$tmp"' EXIT
 printf '#include <bits/stdc++.h>\n' >"$tmp"
 
 system_header="$(
-  "$cxx" "${flags[@]}" -x c++ -H -fsyntax-only "$tmp" 2>&1 >/dev/null |
+  { "$cxx" "${flags[@]}" -x c++ -H -fsyntax-only "$tmp" 2>&1 >/dev/null || true; } |
     awk '/bits\/stdc\+\+\.h$/ { print $2; exit }'
 )"
 
 if [[ -z "$system_header" || ! -f "$system_header" ]]; then
-  echo "Could not locate bits/stdc++.h with $cxx" >&2
-  exit 1
+  system_header="$portable_header"
 fi
 
 system_header_real="$(realpath "$system_header")"
