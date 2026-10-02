@@ -6,7 +6,7 @@ class FenwickTree {
   FenwickTree(ll n) { tree.assign(n + 1, 0); }
 
   void add(ll idx, ll val) {
-    while (idx < tree.size()) {
+    while (idx < (ll)tree.size()) {
       tree[idx] += val;
       idx += idx & -idx;
     }
