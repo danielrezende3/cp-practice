@@ -1,9 +1,9 @@
 {
     "files.exclude": {
-        ".vscode": true,
+        ".vscode": false,
         ".zed": true,
         ".build": true,
-        ".gitignore": true,
+        ".gitignore": false,
         ".clang-format": true,
         ".clangd":true,
         "compile_flags":true,

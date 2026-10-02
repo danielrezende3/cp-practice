@@ -18,7 +18,7 @@
       "cwd": "${fileDirname}",
       "args": [],
       "preRunCommands": [
-        "settings set target.input-path \"${fileDirname}/${fileBasenameNoExtension}.input\""
+        "settings set target.input-path \"${fileDirname}/${fileBasenameNoExtension}.in\""
       ],
       "preLaunchTask": "C/C++: build active file"
     }
