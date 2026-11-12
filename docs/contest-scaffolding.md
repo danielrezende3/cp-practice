@@ -11,10 +11,10 @@ From the repository root, pass the contest name and either the number of problem
 
 Both commands create problems `a` through `e` under `contests/Codeforces Round 1025 (Div. 3)/`.
 
-Each generated `.cpp` file contains:
+Each generated `.cpp` file follows the `Codeforces C++ template` in `.vscode/cpp.code-snippets` (with the editor placeholder removed) and contains:
 
-- the metadata fields used by contest reporting;
 - the local `bits/stdc++.h` include;
+- type aliases and the `MOD` constant;
 - a `solve()` function and a multiple-test-case `main()` template.
 
 Existing source and input files are preserved, so the command can safely fill in missing problem files in an existing contest directory. The accepted range is 1–26 problems, or a last letter from `a` through `z` (case-insensitive).

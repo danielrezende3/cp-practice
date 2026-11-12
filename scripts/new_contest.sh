@@ -48,15 +48,17 @@ for ((i = 0; i < n; i++)); do
   
   if [[ ! -f "${letter}.cpp" ]]; then
     cat >"${letter}.cpp" <<'EOF'
-// time-taken:
-// tag:
-#include "bits/stdc++.h"
+#include "bits/stdc++.h" // IWYU pragma: keep
 
 using namespace std;
-#define ll long long
-#define ld long double
-#define vll vector<ll>
-#define vld vector<ld>
+using ll = long long;
+using ld = long double;
+using vll = vector<ll>;
+using vld = vector<ld>;
+using pl = pair<ll, ll>;
+using vpl = vector<pl>;
+
+const ll MOD = 1e9 + 7;
 
 void solve() {
   
@@ -71,7 +73,6 @@ int main() {
   while (count--) {
     solve();
   }
-  return 0;
 }
 
 EOF

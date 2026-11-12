@@ -6,7 +6,6 @@ Solutions and local tooling for practicing competitive programming.
 
 - [Create a contest](docs/contest-scaffolding.md): generate problem sources and input files from the repository template.
 - [Build and run solutions](docs/build-and-run.md): compile C++20 solutions, run sample input, and use the local precompiled header or VS Code integration.
-- [Generate contest reports](docs/contest-reporting.md): turn solution metadata into a CSV practice report.
 
 ## Study Resources
 

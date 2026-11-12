@@ -14,8 +14,6 @@
 	"Codeforces C++ template": {
 		"prefix": "codeforces",
 		"body": [
-			"// time-taken:",
-			"// tag:",
 			"#include \"bits/stdc++.h\" // IWYU pragma: keep",
 			"",
 			"using namespace std;",
