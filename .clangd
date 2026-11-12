@@ -1,2 +1,5 @@
 CompileFlags:
   Compiler: clang++
+
+Completion:
+  HeaderInsertion: Never
