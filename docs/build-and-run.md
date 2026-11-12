@@ -13,7 +13,7 @@ That command:
 1. creates or refreshes `bits/stdc++.h` and `bits/stdc++.h.pch` in the current contest directory;
 2. compiles `a.cpp` with the `clang++` available on `PATH`;
 3. passes `-I. -include-pch bits/stdc++.h.pch`;
-4. runs `.build/a` with `a.input`;
+4. runs `.build/a` with `a.in`;
 5. writes output to `a.out`.
 
 ## Source Include

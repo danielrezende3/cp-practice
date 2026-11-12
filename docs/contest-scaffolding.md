@@ -1,6 +1,6 @@
 # Contest Scaffolding
 
-`scripts/new_contest.sh` creates a contest directory with one C++ source and one input file per problem.
+`scripts/new_contest.sh` creates a contest directory with one C++ source (`a.cpp`) and one input file (`a.in`) per problem, matching the Makefile and VS Code launch configuration.
 
 From the repository root, pass the contest name and either the number of problems or the last problem letter:
 

@@ -40,10 +40,10 @@ for ((i = 0; i < n; i++)); do
   ascii=$((97 + i))
   letter=$(printf '%b' "\\x$(printf '%x' "$ascii")")
   
-  if [[ ! -f "${letter}.input" ]]; then
-    touch "${letter}.input"
+  if [[ ! -f "${letter}.in" ]]; then
+    touch "${letter}.in"
   else
-    echo "Skipping ${letter}.input (already exists)"
+    echo "Skipping ${letter}.in (already exists)"
   fi
   
   if [[ ! -f "${letter}.cpp" ]]; then
