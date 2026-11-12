@@ -51,6 +51,9 @@ for ((i = 0; i < n; i++)); do
 #include "bits/stdc++.h" // IWYU pragma: keep
 
 using namespace std;
+
+#define ALL(x) (x).begin(), (x).end()
+#define RALL(x) (x).rbegin(), (x).rend()
 using ll = long long;
 using ld = long double;
 using vll = vector<ll>;

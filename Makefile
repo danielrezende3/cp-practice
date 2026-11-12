@@ -9,6 +9,8 @@ PCH_SCRIPT = $(ROOT_DIR)/scripts/setup_pch.sh
 PCH_FLAGS = -include-pch bits/stdc++.h.pch
 
 .PHONY: $(PROBLEMS) pch clean
+# Keep executables built through build-% available for the debugger.
+.PRECIOUS: $(BIN)/%
 
 $(PROBLEMS): %: $(BIN)/%
 	./$(BIN)/$@ < $@.$(INPUT_EXT) > $@.out
